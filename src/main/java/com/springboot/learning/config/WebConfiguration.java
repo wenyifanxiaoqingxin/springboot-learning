@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * Created by fx on 2018/4/11.
  */
-@Configuration
+//@Configuration
 public class WebConfiguration {
     @Bean
     public RemoteIpFilter remoteIpFilter(){
