@@ -54,11 +54,17 @@
 
 
 		<!-- 加入web容器 -->
-		<!--<dependency>-->
-			<!--<groupId>org.springframework.boot</groupId>-->
-			<!--<artifactId>spring-boot-starter-web</artifactId>-->
-			<!--<version>2.0.0.RELEASE</version>-->
-		<!--</dependency>-->
+		<!-- 添加WEB模块 支持MVC  剔除web模块集成的tomcat容器-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 
 		<!--spring-data-jpa -->
 		<dependency>

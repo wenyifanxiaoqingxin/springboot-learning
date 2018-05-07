@@ -1,15 +1,17 @@
-package com.springboot.learning.action;
+package com.springboot.learning.control;
 
 import com.springboot.learning.common.redis.Redis;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by fx on 2018/4/10.
  */
-@RestController
+@Controller
 public class MainController {
     @Autowired
     private Redis redis;
@@ -21,6 +23,7 @@ public class MainController {
     }
 
     @RequestMapping("/redisData/{id}")
+    @ResponseBody
     public String redisData(@PathVariable("id") String id){
         redis.set("FEATRUE_"+id,id);
 

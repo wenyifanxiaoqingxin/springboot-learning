@@ -1,4 +1,4 @@
-package com.springboot.learning.action;
+package com.springboot.learning.control;
 
 import com.springboot.learning.entity.User;
 import com.springboot.learning.entity.mybatis.UserInfo;
@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,18 +28,23 @@ public class LoginController {
     }
 
    @RequestMapping("/login")
-   public String html(Model model, User user, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
+   @ResponseBody
+   public String html(Model model, User user){
 
         String username = user.getUsername();
         String password = user.getPassword();
         UserInfo userInfo = userInfoService.login(username,password);
         if(userInfo!=null){
-
-            return "success111";
+            return "";
 
         }else{
-            model.addAttribute("message","用户名密码错误！");
-            return "redirect:/main";
+            return "";
         }
    }
+
+    @RequestMapping("/success111")
+    public String successHtml(){
+
+        return "success111";
+    }
 }
