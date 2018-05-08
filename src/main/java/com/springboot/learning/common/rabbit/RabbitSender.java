@@ -20,4 +20,11 @@ public class RabbitSender {
         System.out.println("Sender1: "+sendMsg);
         this.rabbitTemplate.convertAndSend("helloQueue",sendMsg);
     }
+
+    public void sendMany(String msg){
+
+        String sendMsg = " hello1! i want send "+msg+ new Date();
+        System.out.println("Sender1: "+sendMsg);
+        this.rabbitTemplate.convertAndSend("helloQueues",sendMsg);
+    }
 }

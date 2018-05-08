@@ -20,6 +20,10 @@ public class DemoApplication {
 		return new Queue("helloQueue");
 	}
 	@Bean
+	public Queue hellwQueues(){
+		return new Queue("helloQueues");
+	}
+	@Bean
 	public Queue userQueue(){
 		return new Queue("user");
 	}
@@ -78,7 +82,7 @@ public class DemoApplication {
 		return BindingBuilder.bind(queueMessages).to(exchange).with("topic.#");
 	}
 
-	//
+	//广播发送消息
 	@Bean
 	Binding bindingExchangeA(Queue AMessage,FanoutExchange fanoutExchange){
 

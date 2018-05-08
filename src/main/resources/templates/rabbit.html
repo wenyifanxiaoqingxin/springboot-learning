@@ -6,9 +6,20 @@
 </head>
 <body>
     <form action="" >
+        <div> <label>发送消息</label><input type="text" id="sendMessage" />
+            <button id="sendBtn">提交一对一发送</button></div>
+        <div>
 
-        <label>发送消息</label><input type="text" id="sendMessage" />
-        <button id="sendBtn">提交</button>
+            <label>发送多个消费者消息</label><input type="text" id="sendMessages" />
+            <button id="sendBtns">提交一对多发送</button>
+        </div>
+        <div>
+            <label>用户名</label><input type="text" id="userId" />
+            <label>密码</label><input type="text" id="password" />
+            <button id="sendTopicBtns">提交topic发送对象</button>
+        </div>
+        <div> <label>发送消息</label><input type="text" id="sendFanoutMessage" />
+            <button id="sendFanoutBtn">提交广播发送</button></div>
     </form>
 </body>
 <script th:src="@{../js/jquery.min.js}" type="text/javascript"></script>
@@ -34,6 +45,63 @@
 
             })
         })
+
+        $("#sendBtns").click(function () {
+            $.ajax({
+                url : '/rabbit/onetomany',
+                type : 'post',
+                dataType : 'json',
+                data:{
+                    sendMsg:$("#sendMessages").val()
+                },
+                success : function(data){
+
+
+
+                }
+
+
+            })
+        })
+
+        $("#sendFanoutBtn").click(function () {
+            $.ajax({
+                url : '/rabbit/fanoutSend',
+                type : 'post',
+                dataType : 'json',
+                data:{
+                    msg:$("#sendFanoutMessage").val()
+                },
+                success : function(data){
+
+
+
+                }
+
+
+            })
+        })
+        //发送对象到topic exchange
+        $("#sendTopicBtns").click(function () {
+            $.ajax({
+                url : '/rabbit/userTopicSend',
+                type : 'post',
+                dataType : 'json',
+                data:{
+                    username:$("#userId").val(),
+                    password:$("#password").val()
+                },
+                success : function(data){
+
+
+
+                }
+
+
+            })
+        })
+
+
     })
 
 </script>

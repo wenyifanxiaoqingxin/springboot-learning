@@ -1,9 +1,11 @@
 package com.springboot.learning.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by fx on 2018/4/11.
  */
-public class User {
+public class User implements Serializable{
     private String username;
 
     public String getUsername() {
